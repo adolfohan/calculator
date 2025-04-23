@@ -2,9 +2,9 @@ name: SonarCloud Analysis
 
 on:
   push:
-    branches: [ master, main ]
+    branches: [ master ]
   pull_request:
-    branches: [ master, main ]
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
@@ -31,3 +31,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=adolfohan_calculator
+            -Dsonar.organization=adolfohan
+            -Dsonar.branch.name=master
+            -Dsonar.branch.target=main
